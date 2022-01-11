@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jho-upp" default="main">
+
+	<target name="main">
+		<echo message="Jetzt geht's los." />
+		<copy todir="../../../.local/lib/upp">
+			<fileset dir="." includes="*.lua" />
+		</copy>
+	</target>
+
+</project>
