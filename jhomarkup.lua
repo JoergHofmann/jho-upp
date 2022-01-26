@@ -184,42 +184,48 @@ end
 -- Befehle um Präsentationen zu erstellen - nur Testfassung
 
 
-function Slide (content)
-
-	if (modus == "slides") then
-		return content
-	else
-		return "Keine Folien"
-	end
-
-end
-
-
-
-function Handout (content)
-
-	if (modus == "handout") then
-		return content
-	else
-		return ""
-	end
-end
-
-
-
+-- function Slide (content)
+-- 
+-- 	if (modus == "slides") then
+-- 		return content
+-- 	else
+-- 		return "Keine Folien"
+-- 	end
+-- 
+-- end
+-- 
+-- 
+-- 
+-- function Handout (content)
+-- 
+-- 	if (modus == "handout") then
+-- 		return content
+-- 	else
+-- 		return ""
+-- 	end
+-- end
+-- 
+-- 
+-- 
+-- function Note (content)
+-- 
+-- 	local s = [[<aside class="notes">]]
+-- 
+-- 	if (modus == "slides") then
+-- 		s = s .. content .. "</aside>"
+-- 		return s
+-- 	end
+-- 
+-- 	if (modus == "notes") then
+-- 		return content
+-- 	end
 function Note (content)
 
-	local s = [[<aside class="notes">]]
-
-	if (modus == "slides") then
-		s = s .. content .. "</aside>"
-		return s
-	end
-
-	if (modus == "notes") then
+	if (modus == "note") then
 		return content
 	end
 end
+-- end
 
 -- **}
 
