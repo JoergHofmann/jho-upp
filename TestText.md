@@ -1,11 +1,14 @@
-:(import "jhomarkup.lua")
 :(SetAutorVorname "Josh")
+
 $(AutorVorname) $(AutorNachname)
 $(AutorStrasse)
 $(AutorPLZ) $(AutorOrt)
 
 :(Jahr = "2019")
 :(Kontenrahmen = "SKR03")
+
+Zielformat: $(zielformat)
+Modus: $(modus)
 
 # Dies ist ein TestText
 

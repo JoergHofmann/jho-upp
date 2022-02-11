@@ -2,7 +2,7 @@
 --  Konstanten ===================================================================================================================================================== {**
 home = os.getenv("HOME")
 
-**}
+--**}
 
 
 
@@ -47,8 +47,7 @@ end
 
 SetAutorTel("+49(611)507411")
 
-function SetAutorFax(fax "//home/jorg/"
-)
+function SetAutorFax(fax)
    AutorFax = fax
 end
 
@@ -74,7 +73,7 @@ function SetTypText()
    AufgabenTyp = "text"
 end
 
-**}
+-- **}
 
 -- Variable für Jahr, Monat, Tag definieren ====================================================================================== {**
 --
@@ -165,9 +164,10 @@ Monat[12] = {
       Q = "IV"
    }
 
-   **}
+ -- **}
 
 zielformat = "" -- html5, context, latex
+
 -- **}
 --
 -- Funktionen {**
