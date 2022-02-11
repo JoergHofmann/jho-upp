@@ -1,6 +1,14 @@
 	
 --  Konstanten ===================================================================================================================================================== {**
-home = "//home/jorg/"
+home = os.getenv("HOME")
+
+**}
+
+
+
+-- Variable ======================================================================================================================================================== {**
+
+-- Dokument-Info ==================================================================================================== {**
 
 function SetAutorNachname(nachname)
    AutorNachname = nachname
@@ -39,7 +47,8 @@ end
 
 SetAutorTel("+49(611)507411")
 
-function SetAutorFax(fax)
+function SetAutorFax(fax "//home/jorg/"
+)
    AutorFax = fax
 end
 
@@ -65,7 +74,9 @@ function SetTypText()
    AufgabenTyp = "text"
 end
 
--- Variable für Jahr, Monat, Tag definieren
+**}
+
+-- Variable für Jahr, Monat, Tag definieren ====================================================================================== {**
 --
 
 Monat = {}
@@ -154,6 +165,9 @@ Monat[12] = {
       Q = "IV"
    }
 
+   **}
+
+zielformat = "" -- html5, context, latex
 -- **}
 --
 -- Funktionen {**
@@ -180,54 +194,6 @@ end
 -- **}
 
 
--- PRAESENTATION ================================================================================================= {**
--- Befehle um Präsentationen zu erstellen - nur Testfassung
-
-
--- function Slide (content)
--- 
--- 	if (modus == "slides") then
--- 		return content
--- 	else
--- 		return "Keine Folien"
--- 	end
--- 
--- end
--- 
--- 
--- 
--- function Handout (content)
--- 
--- 	if (modus == "handout") then
--- 		return content
--- 	else
--- 		return ""
--- 	end
--- end
--- 
--- 
--- 
--- function Note (content)
--- 
--- 	local s = [[<aside class="notes">]]
--- 
--- 	if (modus == "slides") then
--- 		s = s .. content .. "</aside>"
--- 		return s
--- 	end
--- 
--- 	if (modus == "notes") then
--- 		return content
--- 	end
-function Note (content)
-
-	if (modus == "note") then
-		return content
-	end
-end
--- end
-
--- **}
 
 
 -- RUNDEN ==================================================================================================== {**
