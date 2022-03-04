@@ -1,14 +1,18 @@
-require "jhomarkup"
-
 --  Konstanten ===================================================================================================================================================== {**
 zielformat = "context"
 
+-- Sonderzeichen
+nbsp = "~"                                              -- Leerzeichen ohne Umbruch
+ensp = "\\ "                                            -- normales Leerzeichen
+emsp = "\\quad"
+thinsp = "\\,"                                          -- Schmales Leerzeichen
+quot ="&quot;"
+euro = "€"
+copy = "\\copyright"
+ldots = "\\ldots"
 br = "\\crlf"
 
-eur = "\\,€"
-
-nbsp = "~"
-
+EUR = "\\,€"
 -- **}
 
 

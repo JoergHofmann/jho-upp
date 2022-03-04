@@ -1,14 +1,25 @@
-require "jhomarkup"
-
 --  Konstanten ===================================================================================================================================================== {**
 zielformat = "html5"
 
+
+-- Sonderzeichen
+nbsp = "&nbsp;"                                              -- Leerzeichen ohne Umbruch
+ensp = "&ensp;"						     -- normales Leerzeichen
+emsp = "&emsp;"
+thinsp = "&thinsp;"                                          -- Schmales Leerzeichen
+quot ="&quot;"
+euro = "&euro;"
+copy = "&copy;"
+ldots = "&hellip;"
+lsquo ="&lsquo;" 
+sbquo ="&sbquo;"
+ldquo = "&ldquo;"
+bdquo = "&bdquo;"
+lt = "&lt;"                                                      -- Öffnende spitze Klammer "<"
+gt = "&gt;"                                                      -- Schließende spitze Klammer ">"
 br = "<br />"
 
-eur = "&thinsp;€"
-
-nbsp = "&nbsp;"
-
+EUR = "&thinsp;" .. euro
 -- **}
 
 --  Funktionen ===================================================================================================================================================== {**

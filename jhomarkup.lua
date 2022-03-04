@@ -78,6 +78,8 @@ end
 -- Variable für Jahr, Monat, Tag definieren ====================================================================================== {**
 --
 
+heute = os.date('*t')
+
 Monat = {}
 
 Monat[1] = {
@@ -166,12 +168,51 @@ Monat[12] = {
 
  -- **}
 
-zielformat = "" -- html5, context, latex
-
 -- **}
 --
 -- Funktionen {**
 --
+
+-- SetTarget ============================================================================================== {**
+function SetTarget (z)
+	zielformat = z
+	return ""
+end
+-- **}
+
+
+
+
+-- www ==================================================================================================== {**
+-- wird ausgeführt wenn zielformat = html
+
+function www (content)
+
+	if (zielformat == "html5") then
+		return content
+	else
+		return ""
+	end
+end
+
+-- **}
+
+
+
+-- pdf ==================================================================================================== {**
+-- wird ausgeführt wenn zielformat = pdf
+
+function pdf (content)
+
+	if (zielformat == "html5") then
+		return content
+	else
+		return ""
+	end
+end
+
+-- **}
+
 
 
 -- MUSTACHE ==================================================================================================== {**
@@ -238,4 +279,35 @@ end
 
 --**}
 
+-- Datum und Zeit {**
+
+-- ++}
+
+-- Git-Funktionenen {**
+-- Funktionen um Informationen aus Git zu erhalten
+
+function GITHash()
+	local handle = io.popen("git rev-parse HEAD")
+	local result = handle:read("*a")
+	handle:close()
+	return result
+end
+
+function GITAbrHash()
+	local handle = io.popen("git rev-parse --short HEAD")
+	local result = handle:read("*a")
+	handle:close()
+	return result
+end
+
+
+-- \item GITParentHashes = \GITParentHashes\ parent hashes
+-- \item GITAbrParentHashes = \GITAbrParentHashes\ abbreviated parent hashes
+-- \item GITAuthorName = \GITAuthorName\ author name
+-- \item GITAuthorEmail = \GITAuthorEmail\ author email
+-- \item GITAuthorDate = \GITAuthorDate\ author date
+-- \item GITCommitterName = \GITCommitterName\ committer name
+-- \item GITCommitterEmail = \GITCommitterEmail\ committer e-mail
+-- \item GITCommitterDate = \GITCommitterDate\ committer date
+-- **}
 -- **}
