@@ -172,6 +172,23 @@ Monat[12] = {
 --
 -- Funktionen {**
 --
+-- Datum und Uhrzeit
+
+function MMMM (m)
+	return Monat[m].MMMM
+end
+
+function MMM (m)
+	return Monat[m].MMM
+end
+
+function MM (m)
+	return Monat[m].MM
+end
+
+function Quartal (m)
+	return Monat[m].Q
+end
 
 -- SetTarget ============================================================================================== {**
 function SetTarget (z)
