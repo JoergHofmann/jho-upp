@@ -65,14 +65,6 @@ end
 
 SetAutorMail("joerg.hofmann@jho-home.de")
 
-function SetTypBeleg()
-   AufgabenTyp = "beleg"
-end
-
-function SetTypText()
-   AufgabenTyp = "text"
-end
-
 -- **}
 
 -- Variable für Jahr, Monat, Tag definieren ====================================================================================== {**
@@ -168,28 +160,56 @@ Monat[12] = {
 
  -- **}
 
+-- Projektinformationen ====================================================================================== {**
+--
+function SetProjectId (id)
+	ProjectId = id
+end
+
+function SetProjectTitel (t)
+	ProjectTitel = t
+end
+
+function SetTypBeleg()
+   AufgabenTyp = "beleg"
+end
+
+function SetTypText()
+   AufgabenTyp = "text"
+end
+
+-- Git-Funktionenen {**
+-- Funktionen um Informationen aus Git zu erhalten
+
+function GITHash()
+	local handle = io.popen("git rev-parse HEAD")
+	local result = handle:read("*a")
+	handle:close()
+	return result
+end
+
+function GITAbrHash()
+	local handle = io.popen("git rev-parse --short HEAD")
+	local result = handle:read("*a")
+	handle:close()
+	return result
+end
+
+
+-- \item GITParentHashes = \GITParentHashes\ parent hashes
+-- \item GITAbrParentHashes = \GITAbrParentHashes\ abbreviated parent hashes
+-- \item GITAuthorName = \GITAuthorName\ author name
+-- \item GITAuthorEmail = \GITAuthorEmail\ author email
+-- \item GITAuthorDate = \GITAuthorDate\ author date
+-- \item GITCommitterName = \GITCommitterName\ committer name
+-- \item GITCommitterEmail = \GITCommitterEmail\ committer e-mail
+-- \item GITCommitterDate = \GITCommitterDate\ committer date
+-- **}
+-- **} 
 -- **}
 --
 -- Funktionen {**
 --
--- Datum und Uhrzeit
-
-function MMMM (m)
-	return Monat[m].MMMM
-end
-
-function MMM (m)
-	return Monat[m].MMM
-end
-
-function MM (m)
-	return Monat[m].MM
-end
-
-function Quartal (m)
-	return Monat[m].Q
-end
-
 -- SetTarget ============================================================================================== {**
 function SetTarget (z)
 	zielformat = z
@@ -300,31 +320,4 @@ end
 
 -- ++}
 
--- Git-Funktionenen {**
--- Funktionen um Informationen aus Git zu erhalten
-
-function GITHash()
-	local handle = io.popen("git rev-parse HEAD")
-	local result = handle:read("*a")
-	handle:close()
-	return result
-end
-
-function GITAbrHash()
-	local handle = io.popen("git rev-parse --short HEAD")
-	local result = handle:read("*a")
-	handle:close()
-	return result
-end
-
-
--- \item GITParentHashes = \GITParentHashes\ parent hashes
--- \item GITAbrParentHashes = \GITAbrParentHashes\ abbreviated parent hashes
--- \item GITAuthorName = \GITAuthorName\ author name
--- \item GITAuthorEmail = \GITAuthorEmail\ author email
--- \item GITAuthorDate = \GITAuthorDate\ author date
--- \item GITCommitterName = \GITCommitterName\ committer name
--- \item GITCommitterEmail = \GITCommitterEmail\ committer e-mail
--- \item GITCommitterDate = \GITCommitterDate\ committer date
--- **}
 -- **}

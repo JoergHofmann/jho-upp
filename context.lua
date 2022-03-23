@@ -7,14 +7,35 @@ zielformat = "context"
 nbsp = "~"                                              -- Leerzeichen ohne Umbruch
 ensp = "\\ "                                            -- normales Leerzeichen
 emsp = "\\quad"
-thinsp = "\\,"                                          -- Schmales Leerzeichen
+thinsp = "$\\,$"                                          -- Schmales Leerzeichen
 quot ="&quot;"
 euro = "€"
 copy = "\\copyright"
 ldots = "\\ldots"
 br = "\\crlf"
 
-EUR = "\\,€"
+EUR = "$\\,€$"
+
+times = "\\times"
+
+bTable = '\\bTABLE'
+
+eTable = '\\eTABLE\n\n'
+
+eTr = '\\eTR'
+
+bTr = '\\bTR'
+
+bTd = '\\bTD '
+
+eTd = '\\eTD'
+
+bTh = '\\bTH '
+
+eTh = '\\eTH'
+
+tSpace = '\\bTD \\eTD'
+
 -- **}
 
 
@@ -165,5 +186,8 @@ function bs(skto, hkto, betrag)
    return ergebnis
 end
 
+function eur (betrag)
+	return "$" .. betrag .. "\\,€$"
+end
 -- **}
 -- **}

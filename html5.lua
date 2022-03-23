@@ -22,6 +22,29 @@ gt = "&gt;"                                                      -- Schließende
 br = "<br />"
 
 EUR = "&thinsp;" .. euro
+
+times = "*"
+
+bTable = '<table>'
+
+eTable = '</table>'
+
+eTr = '<tr>'
+
+bTr = '</tr>'
+
+bTd = '<td>'
+
+eTd = '</td>'
+
+bTh = '<th>'
+
+eTh = '</th>'
+
+tSpace = ''
+
+
+
 -- **}
 
 --  Funktionen ===================================================================================================================================================== {**
@@ -169,6 +192,10 @@ end
 function bshaben(konto, betrag)
    ergebnis="<tr><td>" .. konto .. "</td><td></td><td>" .. betrag .. "</td></tr>"
    return ergebnis
+end
+
+function eur (betrag)
+	return betrag .. "&thinsp;" .. euro
 end
 
 -- **}
