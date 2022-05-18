@@ -253,7 +253,7 @@ end
 
 
 -- MUSTACHE ==================================================================================================== {**
--- Fügt Daten aus einer YAML-Datei in das Mustache-Template ein.
+-- Fügt Daten aus einer YAML-Datei(datei) in das Mustache-Template(vorlage) ein.
 --
 function mustache (datei, vorlage)
 	
