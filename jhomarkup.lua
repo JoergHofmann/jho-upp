@@ -4,66 +4,27 @@ home = os.getenv("HOME")
 
 --**}
 
-
-
 -- Variable ======================================================================================================================================================== {**
 
 -- Dokument-Info ==================================================================================================== {**
 
-function SetAutorNachname(nachname)
-   AutorNachname = nachname
-end
+AutorNachname = "Hofmann"
 
-SetAutorNachname("Hofmann")
+AutorVorname = "Jörg"
 
+AutorStrasse"Am Schloßpark 78"
 
-function SetAutorVorname(vorname)
-   AutorVorname = vorname
-end
+AutorPLZ = "65203"
 
-SetAutorVorname("Jörg")
+AutorOrt = "Wiesbaden"
 
-function SetAutorStrasse(strasse)
-   AutorStrasse = strasse 
-end
+AutorTel = "+49(611)507411"
 
-SetAutorStrasse("Am Schloßpark 78")
+AutorFax = "+49(611)94939032"
 
-function SetAutorPLZ(plz)
-   AutorPLZ = plz
-end
+AutorMobil = "+49(176)27810343"
 
-SetAutorPLZ("65203")
-
-function SetAutorOrt(ort)
-   AutorOrt = ort
-end
-
-SetAutorOrt("Wiesbaden")
-
-function SetAutorTel(tel)
-   AutorTel = tel
-end
-
-SetAutorTel("+49(611)507411")
-
-function SetAutorFax(fax)
-   AutorFax = fax
-end
-
-SetAutorFax("+49(611)94939032")
-
-function SetAutorMobil(mobil)
-   AutorMobil = mobil
-end
-
-SetAutorMobil("+49(176)27810343")
-
-function SetAutorMail(mail)
-   AutorMail = mail
-end
-
-SetAutorMail("joerg.hofmann@jho-home.de")
+AutorMail = "joerg.hofmann@jho-home.de"
 
 -- **}
 
@@ -162,39 +123,109 @@ Monat[12] = {
 
 -- Projektinformationen ====================================================================================== {**
 --
-function SetProjectId (id)
+ProjectId = ""
+
+ProjectTitel = ""
+
+AufgabenTyp = "" -- BELEG oder TEXT
+
+-- **}
+
+-- **}
+
+-- Funktionen {**
+
+-- Dokument-Info ==================================================================================================== {**
+
+function SetAutorNachname(nachname) --{**
+   AutorNachname = nachname
+end
+-- **}
+
+function SetAutorVorname(vorname) --{**
+   AutorVorname = vorname
+end
+-- **}
+
+function SetAutorStrasse(strasse) --{**
+   AutorStrasse = strasse 
+end
+-- **}
+
+function SetAutorPLZ(plz) --{**
+   AutorPLZ = plz
+end
+-- **}
+
+function SetAutorOrt(ort) --{**
+   AutorOrt = ort
+end
+-- **}
+
+function SetAutorTel(tel) --{**
+   AutorTel = tel
+end
+-- **}
+
+function SetAutorFax(fax) --{**
+   AutorFax = fax
+end
+-- **}
+
+function SetAutorMobil(mobil) --{**
+   AutorMobil = mobil
+end
+-- **}
+
+function SetAutorMail(mail) --{**
+   AutorMail = mail
+end
+-- **}
+
+-- **}
+
+-- Projektinformationen ====================================================================================== {**
+--
+function SetProjectId (id) --{**
 	ProjectId = id
 end
+-- **}
 
-function SetProjectTitel (t)
+function SetProjectTitel (t) --{**
 	ProjectTitel = t
 end
+-- **}
 
-function SetTypBeleg()
+function SetTypBeleg() --{**
    AufgabenTyp = "beleg"
 end
+-- **}
 
-function SetTypText()
+function SetTypText() --{**
    AufgabenTyp = "text"
 end
+-- **}
+
+-- **}
 
 -- Git-Funktionenen {**
 -- Funktionen um Informationen aus Git zu erhalten
 
-function GITHash()
+function GITHash() --{**
 	local handle = io.popen("git rev-parse HEAD")
 	local result = handle:read("*a")
 	handle:close()
 	return result
 end
+-- **}
 
-function GITAbrHash()
+function GITAbrHash() --{**
 	local handle = io.popen("git rev-parse --short HEAD")
 	local result = handle:read("*a")
 	handle:close()
 	return result
 end
-
+-- **}
 
 -- \item GITParentHashes = \GITParentHashes\ parent hashes
 -- \item GITAbrParentHashes = \GITAbrParentHashes\ abbreviated parent hashes
@@ -205,20 +236,13 @@ end
 -- \item GITCommitterEmail = \GITCommitterEmail\ committer e-mail
 -- \item GITCommitterDate = \GITCommitterDate\ committer date
 -- **}
--- **} 
--- **}
---
--- Funktionen {**
---
+
 -- SetTarget ============================================================================================== {**
 function SetTarget (z)
 	zielformat = z
 	return ""
 end
 -- **}
-
-
-
 
 -- www ==================================================================================================== {**
 -- wird ausgeführt wenn zielformat = html
@@ -234,8 +258,6 @@ end
 
 -- **}
 
-
-
 -- pdf ==================================================================================================== {**
 -- wird ausgeführt wenn zielformat = pdf
 
@@ -249,8 +271,6 @@ function pdf (content)
 end
 
 -- **}
-
-
 
 -- MUSTACHE ==================================================================================================== {**
 -- Fügt Daten aus einer YAML-Datei(datei) in das Mustache-Template(vorlage) ein.
@@ -271,8 +291,44 @@ function mustache (datei, vorlage)
 end
 -- **}
 
+-- MISCHEN ==================================================================================================== {**
+-- a = yaml-String, Funktion erzeugt neue Reienfolge
+-- 
+function mischen (a, min)
+	local max = #a.inventar - 1
+	math.randomseed(os.time())
+	for i = min, max, 1 do
+		zi = math.random(max)
+		t = a.inventar[zi]
+		a.inventar[zi] = a.inventar[i]
+		a.inventar[i] = t
+	end
+end
+-- **}  
 
+-- AUFGABE ==================================================================================================== {**
+-- Fügt eine Aufgabe in den Text ein.
+-- 
+function Aufgabe (GlEbene, Titel, Datei)
 
+    local ReturnStr = ""
+    require(Datei)
+
+    -- Überschrift
+    if (zielformat == "context") then
+	ReturnStr = ReturnStr .. "\\page\n"
+    end
+    for i = 1, GlEbene, 1 do
+	ReturnStr = ReturnStr .. "#"
+    end
+    ReturnStr = ReturnStr .. " Übung: " .. Titel .. "\n\n"
+
+    ReturnStr = ReturnStr .. main(GlEbene + 1) 
+
+    return ReturnStr
+
+end
+-- **}
 
 -- RUNDEN ==================================================================================================== {**
 -- Rundet "zahl" auf die in "stellen" angegebene Genauigkeit
@@ -283,8 +339,6 @@ function runden (zahl, stellen)
 end
 
 -- **}
-
-
 
 -- TAUSENDER ================================================================================================== {**
 -- Stellt "zahl" mit "stellen" nach dem Komma und Tausenderpunkt dar
@@ -318,6 +372,22 @@ end
 
 -- Datum und Zeit {**
 
--- ++}
+
+-- **}
+--
+-- **}
+
+-- Testbereich für Funktionen --{**
+
+-- ZUSAMMEN ==================================================================================================== {**
+-- Trennung verhindern
+function zusammen (text)
+    if (zielformat=="context") then
+	text = "\\unhyphenated{" .. text .. "}"
+    end
+    return text
+end
+
+-- **}
 
 -- **}
